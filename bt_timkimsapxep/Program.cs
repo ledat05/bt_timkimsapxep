@@ -17,17 +17,24 @@ namespace bt_timkimsapxep
 
             PhanSinhMang(a, n);
             Console.WriteLine("Mang Ban dau duoc phat sinh ngau nhien:");
-            XuatMang(a, n);
-            InterChangeSort(a, n);
+            XuatMang(a, n)
+                ;
+            //   InterChangeSort(a, n);
+
+            // Insertionsort(a, n); 
+
+            // BubbleSort(a, n);
+
+            QuickSort(a, 0, n - 1);
             Console.WriteLine("\n Mang da duoc sap xep theo thu tu tang dan:");
             XuatMang(a, n);
 
 
 
-            Console.Write("\n Nhap gia tri x can tim:");
+           Console.Write("\n Nhap gia tri x can tim:");
             int x = int.Parse(Console.ReadLine());
 
-            int kq = TimNhiPhan(a, n, x);
+           int kq = TimNhiPhan(a, n, x);
             if (kq == -1)
                 Console.WriteLine($"{x} khong xuat hien trong mang");
             else
@@ -80,21 +87,82 @@ namespace bt_timkimsapxep
             }
             return -1;
         }
-        static void InterChangeSort(int[]a,int n)
+       // static void InterChangeSort(int[]a,int n)
+      //  {
+          //  int tam;
+           // for(int i=0;i<n;i++)
+          //  {
+             //   for(int j=i+1;j<n;j++)
+               // {
+                   // if (a[i]>a[j])
+                  //  {
+                     //   tam = a[i];
+                    //   a[i] = a[j];
+                   //     a[j] =tam;
+             //       }
+            //    }
+          //  }
+      //  }
+      //static void Insertionsort(int[] a,int n)
+        //{
+          //  int tam;
+            //int dem =0;
+            //for(int i=0;i<n-1;i++)
+            //{
+              //  int x = a[i];
+                //int pos = i;
+                //while (pos > 0 && a[pos - 1] > x)
+                //{
+                  //  a[pos] = a[pos-1];
+                   // pos--;
+
+                //}
+                //a[pos] = x;
+                    
+           // }    
+        //}
+       // static void BubbleSort(int[]a,int n)
+        //{
+          //  int tam;
+          //  for(int i=0;i<n-1; i++)
+           // {
+             //   for(int j =n-1;j>i;j--) {
+             //      if (a[j - 1] > a[j])
+              //      {
+               //         tam = a[j];
+               //         a[j]= a[j - 1];
+                 //       a[j-1]= tam;
+                 //   } 
+                  //      
+                   //     }
+          //  }    
+     //   }
+     static void QuickSort(int[]a,int left,int right)
         {
             int tam;
-            for(int i=0;i<n;i++)
+            int i = left;
+            int j=right;
+            int x = a[(left+right)/2];
+            while(i<= j)
             {
-                for(int j=i+1;j<n;j++)
+                while (a[i] < x) i++;
+                while (a[j] > x) j--;
+                if(i <=j)
                 {
-                    if (a[i]>a[j])
-                    {
-                        tam = a[i];
-                        a[i] = a[j];
-                        a[j] =tam;
-                    }
-                }
+                    tam = a[i];
+                    a[i] = a[j];
+                    a[j] = tam;
+                    i++;
+                    j--;
+                }    
             }
+            if (left < j)
+                QuickSort(a, left, j);
+
+            if (right > i)
+                QuickSort(a, i, right);
+            
+
         }
     }
 }
